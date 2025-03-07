@@ -1,4 +1,4 @@
-package com.es.prosacyte.web.demo.exception;
+package com.es.prosacyte.web.demo.domain.exception;
 
 public class InsufficientStockException extends DomainException {
     public InsufficientStockException() {
@@ -7,5 +7,9 @@ public class InsufficientStockException extends DomainException {
 
     public InsufficientStockException(int available, int requested) {
         super(String.format("Insufficient stock. Available: %d, Requested: %d", available, requested));
+    }
+
+    public InsufficientStockException(String stockDisponibleInsuficiente) {
+        super(stockDisponibleInsuficiente);
     }
 }

@@ -1,4 +1,4 @@
-package com.es.prosacyte.web.demo.exception;
+package com.es.prosacyte.web.demo.domain.exception;
 
 public class ProductNotFoundException extends RuntimeException {
     public ProductNotFoundException() {

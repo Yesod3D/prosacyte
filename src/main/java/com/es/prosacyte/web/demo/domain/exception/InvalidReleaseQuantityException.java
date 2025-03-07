@@ -1,4 +1,4 @@
-package com.es.prosacyte.web.demo.exception;
+package com.es.prosacyte.web.demo.domain.exception;
 
 /**
  * Thrown when attempting to release more inventory than was reserved

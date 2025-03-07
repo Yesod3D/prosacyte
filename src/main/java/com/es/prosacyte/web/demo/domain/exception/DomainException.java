@@ -1,4 +1,4 @@
-package com.es.prosacyte.web.demo.exception;
+package com.es.prosacyte.web.demo.domain.exception;
 
 /**
  * Base class for all domain-specific exceptions
