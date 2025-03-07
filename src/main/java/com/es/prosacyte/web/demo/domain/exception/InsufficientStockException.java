@@ -1,15 +1,17 @@
 package com.es.prosacyte.web.demo.domain.exception;
 
-public class InsufficientStockException extends DomainException {
-    public InsufficientStockException() {
-        super("Requested quantity exceeds available stock");
+public class InsufficientStockException extends RuntimeException {
+
+    // Constructor básico con mensaje
+    public InsufficientStockException(String message) {
+        super(message);
     }
 
-    public InsufficientStockException(int available, int requested) {
-        super(String.format("Insufficient stock. Available: %d, Requested: %d", available, requested));
-    }
-
-    public InsufficientStockException(String stockDisponibleInsuficiente) {
-        super(stockDisponibleInsuficiente);
+    // Constructor detallado con información contextual
+    public InsufficientStockException(Long productId, int available, int requested) {
+        super(String.format(
+                "Stock insuficiente para el producto %d. Disponible: %d, Solicitado: %d",
+                productId, available, requested
+        ));
     }
 }
