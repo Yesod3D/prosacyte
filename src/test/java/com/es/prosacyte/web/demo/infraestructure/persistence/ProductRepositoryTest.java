@@ -9,25 +9,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 class ProductRepositoryTest {
-
     @Autowired
     private ProductRepository productRepository;
 
     @Test
-    void shouldSaveAndRetrieveProduct() {
-        Product product = new Product(
-                null,
-                "Test Product",
-                "Test Description",
-                BigDecimal.valueOf(19.99),
-                null,
-                null
-        );
+    void persistProduct_ShouldSaveCorrectData() {
+        Product product = new Product("Monitor", "4K Monitor", BigDecimal.valueOf(300));
 
         Product saved = productRepository.save(product);
-        Product found = productRepository.findById(saved.getId()).orElse(null);
+        Product found = productRepository.findById(saved.getId()).get();
 
-        assertThat(found).isNotNull();
-        assertThat(found.getName()).isEqualTo("Test Product");
+        assertThat(found.getDescription()).isEqualTo("4K Monitor");
+        assertThat(found.getCreatedAt()).isNotNull();
     }
 }

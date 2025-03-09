@@ -2,12 +2,14 @@ package com.es.prosacyte.web.demo.infraestructure.rest;
 
 import com.es.prosacyte.web.demo.aplication.service.ProductService;
 import com.es.prosacyte.web.demo.domain.exception.ProductNotFoundException;
+import com.es.prosacyte.web.demo.domain.model.PriceHistory;
 import com.es.prosacyte.web.demo.domain.model.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/products")
@@ -26,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+    public ResponseEntity<Optional<Product>> getProductById(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(productService.getProductById(id));
         } catch (ProductNotFoundException e) {
@@ -55,5 +57,12 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // Nuevo endpoint en ProductController
+    @GetMapping("/{id}/price-history")
+    public ResponseEntity<List<PriceHistory>> getPriceHistory(@PathVariable Long id) {
+        List<PriceHistory> history = productService.getPriceHistory(id);
+        return ResponseEntity.ok(history);
     }
 }

@@ -35,4 +35,10 @@ public class Category {
         products.remove(product);
         product.setCategory(null);
     }
+
+    //Contructor Test
+    public Category(long id, String books) {
+        this.id = id;
+        this.name = books;
+    }
 }

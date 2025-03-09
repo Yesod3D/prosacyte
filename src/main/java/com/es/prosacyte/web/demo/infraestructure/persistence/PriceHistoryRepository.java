@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PriceHistoryRepository extends JpaRepository<PriceHistory, Long> {
     List<PriceHistory> findByProductIdOrderByChangeDateDesc(Long productId);
+
+    List<PriceHistory> findByProductId(Long id);
 }
